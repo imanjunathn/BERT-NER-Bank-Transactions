@@ -52,15 +52,22 @@ training_args = TrainingArguments(
     evaluation_strategy="epoch",
     learning_rate=2e-5,
     per_device_train_batch_size=16,
+    per_device_eval_batch_size=16,
     num_train_epochs=3,
+    weight_decay=0.01,
+    logging_dir='./logs',
+    logging_steps=10,
+    save_steps=500,
+    save_total_limit=2,
 )
 
 trainer = Trainer(
     model=model,
     args=training_args,
-    train_dataset=train_dataset,
-    eval_dataset=test_dataset,
+    train_dataset=final_dataset['train'],
+    eval_dataset=final_dataset['test'],
     tokenizer=tokenizer,
+    data_collator=DataCollatorForTokenClassification(tokenizer)
 )
 
 trainer.train()
