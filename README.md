@@ -62,9 +62,11 @@ trainer = Trainer(
 )
 
 trainer.train()
-
+```
 
 ### Usage
+```python
 inputs = tokenizer("Your SMS message here", return_tensors="pt")
 outputs = model(**inputs)
 predictions = torch.argmax(outputs.logits, dim=2)
+```
