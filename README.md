@@ -41,9 +41,11 @@ tokenizer = BertTokenizerFast.from_pretrained('bert-base-cased')
 
 ### Tokenization
 The model is fine-tuned using the training dataset with the following code:
-from transformers import BertForTokenClassification, Trainer, TrainingArguments
+from transformers import AutoModelForTokenClassification, TrainingArguments, Trainer
 
-model = BertForTokenClassification.from_pretrained('bert-base-cased', num_labels=len(label_list))
+model = AutoModelForTokenClassification.from_pretrained(tokenizer_name, 
+                                                        num_labels=len(list(unique_labels)),
+                                                        id2label=id2label, label2id=label2id)
 
 training_args = TrainingArguments(
     output_dir='./results',
