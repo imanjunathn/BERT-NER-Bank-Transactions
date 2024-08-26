@@ -22,6 +22,7 @@ pip install transformers datasets pandas torch
 To get started, clone the repository using the following commands:
 
 git clone https://github.com/yourusername/BERT-NER-Bank-Transactions.git
+
 cd BERT-NER-Bank-Transactions
 
 
